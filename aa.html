@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山东省2025年普通高等学校招生考试信息平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#3b82f6',
+                        accent: '#2563eb',
+                        neutral: '#f1f5f9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .bg-gradient-blue {
+                background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            }
+            .card-shadow {
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<!-- 顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <img src="https://picsum.photos/50/50?random=1" alt="山东省教育厅logo" class="h-10 w-10 rounded">
+            <div>
+                <h1 class="text-lg font-bold text-primary">山东省教育招生考试院</h1>
+                <p class="text-xs text-gray-500">Shandong Education Enrollment Examinations Institute</p>
+            </div>
+        </div>
+        <nav class="hidden md:flex items-center space-x-6">
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">首页</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">通知公告</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">政策法规</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">招生计划</a>
+            <a href="#" class="text-primary font-medium border-b-2 border-primary pb-1">成绩查询</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">录取查询</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">院校信息</a>
+        </nav>
+        <div class="md:hidden">
+            <button id="menuBtn" class="text-gray-700 focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+    <!-- 移动端菜单 -->
+    <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+        <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">首页</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">通知公告</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">政策法规</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">招生计划</a>
+            <a href="#" class="text-primary font-medium py-2">成绩查询</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">录取查询</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">院校信息</a>
+        </div>
+    </div>
+</header>
+
+<!-- 主横幅 -->
+<div class="bg-gradient-blue text-white py-12 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-bold mb-4 text-shadow">山东省2025年普通高等学校招生考试</h2>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] opacity-90 mb-6">成绩查询系统</p>
+            <div class="flex justify-center">
+                    <span class="bg-white/20 px-4 py-2 rounded-full text-sm md:text-base">
+                        <i class="fa fa-calendar-o mr-2"></i>查询时间: 2025年6月26日 - 7月10日
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 主要内容区 -->
+<main class="container mx-auto px-4 py-10">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- 标签页导航 -->
+        <div class="flex border-b">
+            <button class="tab-btn active flex-1 py-4 px-6 text-center font-medium text-primary border-b-2 border-primary" data-tab="gaokao">
+                <i class="fa fa-graduation-cap mr-2"></i>普通高考成绩
+            </button>
+            <button class="tab-btn flex-1 py-4 px-6 text-center font-medium text-gray-500 hover:text-gray-700" data-tab="skill">
+                <i class="fa fa-cogs mr-2"></i>春季高考技能测试
+            </button>
+            <button class="tab-btn flex-1 py-4 px-6 text-center font-medium text-gray-500 hover:text-gray-700" data-tab="art">
+                <i class="fa fa-paint-brush mr-2"></i>艺术类专业成绩
+            </button>
+        </div>
+
+        <!-- 标签页内容 -->
+        <div class="tab-content p-6">
+            <!-- 普通高考成绩查询 -->
+            <div id="gaokao" class="tab-pane active">
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">普通高等学校招生全国统一考试成绩查询</h3>
+                    <p class="text-gray-600">请输入相关信息进行成绩查询</p>
+                </div>
+
+                <form id="scoreForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="idCard" class="block text-sm font-medium text-gray-700 mb-1">身份证号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-id-card-o"></i>
+                                    </span>
+                                <input type="text" id="idCard" name="idCard" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入18位身份证号码" maxlength="18" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="examNumber" class="block text-sm font-medium text-gray-700 mb-1">考生号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-file-text-o"></i>
+                                    </span>
+                                <input type="text" id="examNumber" name="examNumber" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入14位考生号" maxlength="14" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                <input type="text" id="name" name="name" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入考生姓名" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="verificationCode" class="block text-sm font-medium text-gray-700 mb-1">验证码</label>
+                            <div class="flex space-x-3">
+                                <div class="relative flex-1">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                            <i class="fa fa-shield"></i>
+                                        </span>
+                                    <input type="text" id="verificationCode" name="verificationCode" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入验证码" required>
+                                </div>
+                                <div class="w-36 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity duration-200" id="captchaImg">
+                                    <span class="text-gray-600 text-sm">点击刷新验证码</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" id="queryBtn" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center justify-center">
+                            <i class="fa fa-search mr-2"></i>查询成绩
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 春季高考技能测试成绩查询 -->
+            <div id="skill" class="tab-pane hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">春季高考技能测试成绩查询</h3>
+                    <p class="text-gray-600">请输入相关信息进行成绩查询</p>
+                </div>
+
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="skillIdCard" class="block text-sm font-medium text-gray-700 mb-1">身份证号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-id-card-o"></i>
+                                    </span>
+                                <input type="text" id="skillIdCard" name="skillIdCard" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入18位身份证号码" maxlength="18" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="skillExamNumber" class="block text-sm font-medium text-gray-700 mb-1">考生号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-file-text-o"></i>
+                                    </span>
+                                <input type="text" id="skillExamNumber" name="skillExamNumber" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入14位考生号" maxlength="14" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="skillName" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                <input type="text" id="skillName" name="skillName" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入考生姓名" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="skillVerificationCode" class="block text-sm font-medium text-gray-700 mb-1">验证码</label>
+                            <div class="flex space-x-3">
+                                <div class="relative flex-1">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                            <i class="fa fa-shield"></i>
+                                        </span>
+                                    <input type="text" id="skillVerificationCode" name="skillVerificationCode" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入验证码" required>
+                                </div>
+                                <div class="w-36 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity duration-200" id="skillCaptchaImg">
+                                    <span class="text-gray-600 text-sm">点击刷新验证码</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center justify-center">
+                            <i class="fa fa-search mr-2"></i>查询成绩
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 艺术类专业成绩查询 -->
+            <div id="art" class="tab-pane hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">艺术类专业成绩查询</h3>
+                    <p class="text-gray-600">请输入相关信息进行成绩查询</p>
+                </div>
+
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="artIdCard" class="block text-sm font-medium text-gray-700 mb-1">身份证号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-id-card-o"></i>
+                                    </span>
+                                <input type="text" id="artIdCard" name="artIdCard" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入18位身份证号码" maxlength="18" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="artExamNumber" class="block text-sm font-medium text-gray-700 mb-1">考生号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-file-text-o"></i>
+                                    </span>
+                                <input type="text" id="artExamNumber" name="artExamNumber" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入14位考生号" maxlength="14" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="artName" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                <input type="text" id="artName" name="artName" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入考生姓名" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="artMajor" class="block text-sm font-medium text-gray-700 mb-1">报考专业</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-paint-brush"></i>
+                                    </span>
+                                <select id="artMajor" name="artMajor" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 appearance-none bg-white">
+                                    <option value="">请选择报考专业</option>
+                                    <option value="music">音乐类</option>
+                                    <option value="art">美术类</option>
+                                    <option value="dance">舞蹈类</option>
+                                    <option value="drama">戏剧影视类</option>
+                                    <option value="media">播音与主持类</option>
+                                    <option value="other">其他类</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                    <i class="fa fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="artVerificationCode" class="block text-sm font-medium text-gray-700 mb-1">验证码</label>
+                            <div class="flex space-x-3">
+                                <div class="relative flex-1">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                            <i class="fa fa-shield"></i>
+                                        </span>
+                                    <input type="text" id="artVerificationCode" name="artVerificationCode" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入验证码" required>
+                                </div>
+                                <div class="w-36 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity duration-200" id="artCaptchaImg">
+                                    <span class="text-gray-600 text-sm">点击刷新验证码</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center justify-center">
+                            <i class="fa fa-search mr-2"></i>查询成绩
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成绩结果展示区域 -->
+    <div id="resultSection" class="max-w-4xl mx-auto mt-10 bg-white rounded-xl shadow-lg overflow-hidden hidden">
+        <div class="bg-primary text-white p-6">
+            <h3 class="text-xl font-semibold">高考成绩查询结果</h3>
+            <p class="opacity-90 mt-1">以下是您的2025年山东省普通高等学校招生考试成绩信息</p>
+        </div>
+        <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-medium text-gray-700 mb-2">考生信息</h4>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">姓名:</span>
+                            <span class="font-medium" id="resultName">田雨禾</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">考生号:</span>
+                            <span class="font-medium" id="resultExamNumber">25370101123456</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">身份证号:</span>
+                            <span class="font-medium" id="resultIdCard">370102********4234</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">报考科类:</span>
+                            <span class="font-medium" id="resultCategory">夏季高考-普通类</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-medium text-gray-700 mb-2">成绩信息</h4>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">语文:</span>
+                            <span class="font-medium text-primary" id="chineseScore">131</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">数学:</span>
+                            <span class="font-medium text-primary" id="mathScore">137</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">外语:</span>
+                            <span class="font-medium text-primary" id="englishScore">140</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">物理:</span>
+                            <span class="font-medium text-primary" id="physicsScore">89</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">化学:</span>
+                            <span class="font-medium text-primary" id="chemistryScore">94</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">生物:</span>
+                            <span class="font-medium text-primary" id="biologyScore">91</span>
+                        </div>
+                        <div class="flex justify-between border-t border-gray-200 pt-2 mt-2">
+                            <span class="text-gray-600 font-medium">总分:</span>
+                            <span class="font-bold text-lg text-primary" id="totalScore">682</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded-lg mb-8">
+                <h4 class="font-medium text-gray-700 mb-3">位次信息</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary mb-1" id="totalRank">1,245</div>
+                        <div class="text-sm text-gray-600">总分位次</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary mb-1" id="subjectRank">897</div>
+                        <div class="text-sm text-gray-600">物理学科类位次</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary mb-1" id="provinceRank">321</div>
+                        <div class="text-sm text-gray-600">省内位次</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 justify-center">
+                <button id="printBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-6 rounded-lg transition-all duration-200 flex items-center justify-center">
+                    <i class="fa fa-print mr-2"></i>打印成绩
+                </button>
+                <button id="saveBtn" class="bg-primary hover:bg-primary/90 text-white font-medium py-2 px-6 rounded-lg transition-all duration-200 flex items-center justify-center">
+                    <i class="fa fa-download mr-2"></i>保存PDF
+                </button>
+                <button id="backBtn" class="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 font-medium py-2 px-6 rounded-lg transition-all duration-200 flex items-center justify-center">
+                    <i class="fa fa-arrow-left mr-2"></i>返回查询
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 温馨提示 -->
+    <div class="mt-10 bg-blue-50 border-l-4 border-primary p-6 rounded-r-lg">
+        <h3 class="font-semibold text-primary mb-2">温馨提示</h3>
+        <ul class="space-y-2 text-gray-700">
+            <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-2"></i>
+                <span>1. 若查询结果显示异常，请检查输入的信息是否准确无误。</span>
+            </li>
+            <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-2"></i>
+                <span>2. 如对成绩有疑问，请在规定时间内联系当地招生考试机构申请复核。</span>
+            </li>
+            <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-2"></i>
+                <span>3. 请妥善保管个人信息，避免泄露。</span>
+            </li>
+            <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-2"></i>
+                <span>4. 本系统成绩仅供参考，最终以正式成绩单为准。</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 常见问题 -->
+    <div class="mt-10 bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-6 border-b">
+            <h3 class="text-xl font-semibold text-gray-800">常见问题</h3>
+        </div>
+        <div class="p-6 space-y-4">
+            <div class="border-b border-gray-100 pb-4">
+                <h4 class="font-medium text-gray-800 mb-2">1. 如何申请成绩复核？</h4>
+                <p class="text-gray-600">考生如对本人成绩有异议，可在规定时间内携带本人身份证、准考证到所在县（市、区）招生考试机构办理成绩复核申请手续。复核结果由招生考试机构通知考生本人。</p>
+            </div>
+            <div class="border-b border-gray-100 pb-4">
+                <h4 class="font-medium text-gray-800 mb-2">2. 何时可以查询录取结果？</h4>
+                <p class="text-gray-600">2025年山东省普通高校招生录取工作将从7月上旬开始，至8月底结束。各批次录取结果查询时间请关注山东省教育招生考试院官网通知。</p>
+            </div>
+            <div class="border-b border-gray-100 pb-4">
+                <h4 class="font-medium text-gray-800 mb-2">3. 高考总分是如何计算的？</h4>
+                <p class="text-gray-600">夏季高考总成绩由语文、数学、外语3门统一高考科目成绩和考生选报的3门普通高中学业水平等级考试科目成绩组成，总分为750分。其中，语文、数学、外语单科满分均为150分，按原始成绩计入总分；选考科目单科满分均为100分，其中物理、历史以原始成绩计入总分，其余科目以等级转换分计入总分。</p>
+            </div>
+            <div>
+                <h4 class="font-medium text-gray-800 mb-2">4. 忘记考生号怎么办？</h4>
+                <p class="text-gray-600">考生可联系所在学校或县（市、区）招生考试机构查询本人考生号。也可登录山东省教育招生考试院官网，通过"找回考生号"功能，凭身份证号和姓名等信息查询。</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- 页脚 -->
+<footer class="bg-gray-800 text-white mt-16">
+    <div class="container mx-auto px-4 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                <ul class="space-y-2">
+                    <li class="flex items-center">
+                        <i class="fa fa-phone mr-2 text-gray-400"></i>
+                        <span>咨询电话：0531-86162757</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-envelope mr-2 text-gray-400"></i>
+                        <span>邮箱：zsb@sd-ei.edu.cn</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-map-marker mr-2 text-gray-400"></i>
+                        <span>地址：山东省济南市文化西路29号</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">相关链接</h4>
+                <ul class="space-y-2">
+                    <li><a href="http://www.sdei.edu.cn/" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-200">山东省教育招生考试院</a></li>
+                    <li><a href="http://zsb.sdei.edu.cn/" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-200">山东省教育厅</a></li>
+                    <li><a href="https://gaokao.chsi.com.cn/" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-200">中国高等教育学生信息网</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">关注我们</h4>
+                <div class="flex space-x-4 mb-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors duration-200">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors duration-200">
+                        <i class="fa fa-wechat"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors duration-200">
+                        <i class="fa fa-qq"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm">扫描下方二维码，关注官方公众号</p>
+                <div class="mt-2 bg-gray-700 w-32 h-32 flex items-center justify-center">
+                    <span class="text-xs">公众号二维码</span>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+            <p>© 2025 山东省教育招生考试院 版权所有</p>
+            <p class="mt-1">鲁ICP备XXXXXXXX号-X | 鲁公网安备XXXXXXXXXXXXXX号</p>
+        </div>
+    </div>
+</footer>
+
+<!-- 加载动画 -->
+<div id="loading" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-xl flex flex-col items-center">
+        <div class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="text-gray-700 font-medium">正在查询成绩，请稍候...</p>
+    </div>
+</div>
+
+<!-- 成功提示 -->
+<div id="successToast" class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg z-50 hidden transform translate-y-10 opacity-0 transition-all duration-300">
+    <div class="flex items-center">
+        <i class="fa fa-check-circle text-xl mr-2"></i>
+        <span>成绩查询成功！</span>
+    </div>
+</div>
+
+<script>
+    // 移动端菜单切换
+    document.getElementById('menuBtn').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // 标签页切换
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // 移除所有标签按钮的活动状态
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active', 'text-primary', 'border-b-2', 'border-primary');
+                b.classList.add('text-gray-500');
+            });
+
+            // 添加当前标签按钮的活动状态
+            this.classList.add('active', 'text-primary', 'border-b-2', 'border-primary');
+            this.classList.remove('text-gray-500');
+
+            // 隐藏所有标签内容
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.add('hidden');
+                pane.classList.remove('active');
+            });
+
+            // 显示当前标签内容
+            const tabId = this.getAttribute('data-tab');
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // 验证码刷新
+    document.getElementById('captchaImg').addEventListener('click', function() {
+        this.innerHTML = '<span class="text-gray-600 text-sm">验证码已刷新</span>';
+        setTimeout(() => {
+            this.innerHTML = '<span class="text-gray-600 text-sm">点击刷新验证码</span>';
+        }, 2000);
+    });
+
+    // 表单提交处理
+    document.getElementById('scoreForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // 显示加载动画
+        document.getElementById('loading').classList.remove('hidden');
+
+        // 模拟API请求延迟
+        setTimeout(() => {
+            // 隐藏加载动画
+            document.getElementById('loading').classList.add('hidden');
+
+            // 显示成功提示
+            const successToast = document.getElementById('successToast');
+            successToast.classList.remove('hidden', 'translate-y-10', 'opacity-0');
+
+            // 3秒后隐藏提示
+            setTimeout(() => {
+                successToast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => {
+                    successToast.classList.add('hidden');
+                }, 300);
+            }, 3000);
+
+            // 显示成绩结果
+            document.getElementById('resultSection').classList.remove('hidden');
+
+            // 滚动到结果区域
+            document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+        }, 1500);
+    });
+
+    // 返回查询按钮
+    document.getElementById('backBtn').addEventListener('click', function() {
+        document.getElementById('resultSection').classList.add('hidden');
+        document.getElementById('scoreForm').reset();
+    });
+
+    // 打印按钮
+    document.getElementById('printBtn').addEventListener('click', function() {
+        window.print();
+    });
+
+    // 保存PDF按钮
+    document.getElementById('saveBtn').addEventListener('click', function() {
+        alert('PDF保存功能将在正式环境中提供');
+    });
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山东省2025年普通高等学校招生考试信息平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e40af',
+                        secondary: '#3b82f6',
+                        accent: '#2563eb',
+                        neutral: '#f1f5f9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .bg-gradient-blue {
+                background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            }
+            .card-shadow {
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<!-- 顶部导航栏 -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <img src="https://picsum.photos/50/50?random=1" alt="山东省教育厅logo" class="h-10 w-10 rounded">
+            <div>
+                <h1 class="text-lg font-bold text-primary">山东省教育招生考试院</h1>
+                <p class="text-xs text-gray-500">Shandong Education Enrollment Examinations Institute</p>
+            </div>
+        </div>
+        <nav class="hidden md:flex items-center space-x-6">
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">首页</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">通知公告</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">政策法规</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">招生计划</a>
+            <a href="#" class="text-primary font-medium border-b-2 border-primary pb-1">成绩查询</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">录取查询</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200">院校信息</a>
+        </nav>
+        <div class="md:hidden">
+            <button id="menuBtn" class="text-gray-700 focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </div>
+    <!-- 移动端菜单 -->
+    <div id="mobileMenu" class="md:hidden hidden bg-white shadow-lg absolute w-full">
+        <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">首页</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">通知公告</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">政策法规</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">招生计划</a>
+            <a href="#" class="text-primary font-medium py-2">成绩查询</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">录取查询</a>
+            <a href="#" class="text-gray-700 hover:text-primary transition-colors duration-200 py-2">院校信息</a>
+        </div>
+    </div>
+</header>
+
+<!-- 主横幅 -->
+<div class="bg-gradient-blue text-white py-12 md:py-20">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-bold mb-4 text-shadow">山东省2025年普通高等学校招生考试</h2>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] opacity-90 mb-6">成绩查询系统</p>
+            <div class="flex justify-center">
+                    <span class="bg-white/20 px-4 py-2 rounded-full text-sm md:text-base">
+                        <i class="fa fa-calendar-o mr-2"></i>查询时间: 2025年6月26日 - 7月10日
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 主要内容区 -->
+<main class="container mx-auto px-4 py-10">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- 标签页导航 -->
+        <div class="flex border-b">
+            <button class="tab-btn active flex-1 py-4 px-6 text-center font-medium text-primary border-b-2 border-primary" data-tab="gaokao">
+                <i class="fa fa-graduation-cap mr-2"></i>普通高考成绩
+            </button>
+            <button class="tab-btn flex-1 py-4 px-6 text-center font-medium text-gray-500 hover:text-gray-700" data-tab="skill">
+                <i class="fa fa-cogs mr-2"></i>春季高考技能测试
+            </button>
+            <button class="tab-btn flex-1 py-4 px-6 text-center font-medium text-gray-500 hover:text-gray-700" data-tab="art">
+                <i class="fa fa-paint-brush mr-2"></i>艺术类专业成绩
+            </button>
+        </div>
+
+        <!-- 标签页内容 -->
+        <div class="tab-content p-6">
+            <!-- 普通高考成绩查询 -->
+            <div id="gaokao" class="tab-pane active">
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">普通高等学校招生全国统一考试成绩查询</h3>
+                    <p class="text-gray-600">请输入相关信息进行成绩查询</p>
+                </div>
+
+                <form id="scoreForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="idCard" class="block text-sm font-medium text-gray-700 mb-1">身份证号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-id-card-o"></i>
+                                    </span>
+                                <input type="text" id="idCard" name="idCard" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入18位身份证号码" maxlength="18" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="examNumber" class="block text-sm font-medium text-gray-700 mb-1">考生号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-file-text-o"></i>
+                                    </span>
+                                <input type="text" id="examNumber" name="examNumber" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入14位考生号" maxlength="14" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                <input type="text" id="name" name="name" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入考生姓名" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="verificationCode" class="block text-sm font-medium text-gray-700 mb-1">验证码</label>
+                            <div class="flex space-x-3">
+                                <div class="relative flex-1">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                            <i class="fa fa-shield"></i>
+                                        </span>
+                                    <input type="text" id="verificationCode" name="verificationCode" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入验证码" required>
+                                </div>
+                                <div class="w-36 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity duration-200" id="captchaImg">
+                                    <span class="text-gray-600 text-sm">点击刷新验证码</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" id="queryBtn" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center justify-center">
+                            <i class="fa fa-search mr-2"></i>查询成绩
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 春季高考技能测试成绩查询 -->
+            <div id="skill" class="tab-pane hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">春季高考技能测试成绩查询</h3>
+                    <p class="text-gray-600">请输入相关信息进行成绩查询</p>
+                </div>
+
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="skillIdCard" class="block text-sm font-medium text-gray-700 mb-1">身份证号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-id-card-o"></i>
+                                    </span>
+                                <input type="text" id="skillIdCard" name="skillIdCard" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入18位身份证号码" maxlength="18" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="skillExamNumber" class="block text-sm font-medium text-gray-700 mb-1">考生号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-file-text-o"></i>
+                                    </span>
+                                <input type="text" id="skillExamNumber" name="skillExamNumber" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入14位考生号" maxlength="14" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="skillName" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                <input type="text" id="skillName" name="skillName" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入考生姓名" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="skillVerificationCode" class="block text-sm font-medium text-gray-700 mb-1">验证码</label>
+                            <div class="flex space-x-3">
+                                <div class="relative flex-1">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                            <i class="fa fa-shield"></i>
+                                        </span>
+                                    <input type="text" id="skillVerificationCode" name="skillVerificationCode" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入验证码" required>
+                                </div>
+                                <div class="w-36 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity duration-200" id="skillCaptchaImg">
+                                    <span class="text-gray-600 text-sm">点击刷新验证码</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center justify-center">
+                            <i class="fa fa-search mr-2"></i>查询成绩
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 艺术类专业成绩查询 -->
+            <div id="art" class="tab-pane hidden">
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">艺术类专业成绩查询</h3>
+                    <p class="text-gray-600">请输入相关信息进行成绩查询</p>
+                </div>
+
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="artIdCard" class="block text-sm font-medium text-gray-700 mb-1">身份证号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-id-card-o"></i>
+                                    </span>
+                                <input type="text" id="artIdCard" name="artIdCard" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入18位身份证号码" maxlength="18" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="artExamNumber" class="block text-sm font-medium text-gray-700 mb-1">考生号</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-file-text-o"></i>
+                                    </span>
+                                <input type="text" id="artExamNumber" name="artExamNumber" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入14位考生号" maxlength="14" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="artName" class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                <input type="text" id="artName" name="artName" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入考生姓名" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="artMajor" class="block text-sm font-medium text-gray-700 mb-1">报考专业</label>
+                            <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                        <i class="fa fa-paint-brush"></i>
+                                    </span>
+                                <select id="artMajor" name="artMajor" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200 appearance-none bg-white">
+                                    <option value="">请选择报考专业</option>
+                                    <option value="music">音乐类</option>
+                                    <option value="art">美术类</option>
+                                    <option value="dance">舞蹈类</option>
+                                    <option value="drama">戏剧影视类</option>
+                                    <option value="media">播音与主持类</option>
+                                    <option value="other">其他类</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                    <i class="fa fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="artVerificationCode" class="block text-sm font-medium text-gray-700 mb-1">验证码</label>
+                            <div class="flex space-x-3">
+                                <div class="relative flex-1">
+                                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
+                                            <i class="fa fa-shield"></i>
+                                        </span>
+                                    <input type="text" id="artVerificationCode" name="artVerificationCode" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-200" placeholder="请输入验证码" required>
+                                </div>
+                                <div class="w-36 h-10 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity duration-200" id="artCaptchaImg">
+                                    <span class="text-gray-600 text-sm">点击刷新验证码</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center justify-center">
+                            <i class="fa fa-search mr-2"></i>查询成绩
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成绩结果展示区域 -->
+    <div id="resultSection" class="max-w-4xl mx-auto mt-10 bg-white rounded-xl shadow-lg overflow-hidden hidden">
+        <div class="bg-primary text-white p-6">
+            <h3 class="text-xl font-semibold">高考成绩查询结果</h3>
+            <p class="opacity-90 mt-1">以下是您的2025年山东省普通高等学校招生考试成绩信息</p>
+        </div>
+        <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-medium text-gray-700 mb-2">考生信息</h4>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">姓名:</span>
+                            <span class="font-medium" id="resultName">田雨禾</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">考生号:</span>
+                            <span class="font-medium" id="resultExamNumber">25370101123456</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">身份证号:</span>
+                            <span class="font-medium" id="resultIdCard">370102********4234</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">报考科类:</span>
+                            <span class="font-medium" id="resultCategory">夏季高考-普通类</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <h4 class="font-medium text-gray-700 mb-2">成绩信息</h4>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">语文:</span>
+                            <span class="font-medium text-primary" id="chineseScore">131</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">数学:</span>
+                            <span class="font-medium text-primary" id="mathScore">137</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">外语:</span>
+                            <span class="font-medium text-primary" id="englishScore">140</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">物理:</span>
+                            <span class="font-medium text-primary" id="physicsScore">89</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">化学:</span>
+                            <span class="font-medium text-primary" id="chemistryScore">94</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">生物:</span>
+                            <span class="font-medium text-primary" id="biologyScore">91</span>
+                        </div>
+                        <div class="flex justify-between border-t border-gray-200 pt-2 mt-2">
+                            <span class="text-gray-600 font-medium">总分:</span>
+                            <span class="font-bold text-lg text-primary" id="totalScore">682</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-4 rounded-lg mb-8">
+                <h4 class="font-medium text-gray-700 mb-3">位次信息</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary mb-1" id="totalRank">1,245</div>
+                        <div class="text-sm text-gray-600">总分位次</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary mb-1" id="subjectRank">897</div>
+                        <div class="text-sm text-gray-600">物理学科类位次</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-primary mb-1" id="provinceRank">321</div>
+                        <div class="text-sm text-gray-600">省内位次</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 justify-center">
+                <button id="printBtn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-6 rounded-lg transition-all duration-200 flex items-center justify-center">
+                    <i class="fa fa-print mr-2"></i>打印成绩
+                </button>
+                <button id="saveBtn" class="bg-primary hover:bg-primary/90 text-white font-medium py-2 px-6 rounded-lg transition-all duration-200 flex items-center justify-center">
+                    <i class="fa fa-download mr-2"></i>保存PDF
+                </button>
+                <button id="backBtn" class="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 font-medium py-2 px-6 rounded-lg transition-all duration-200 flex items-center justify-center">
+                    <i class="fa fa-arrow-left mr-2"></i>返回查询
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 温馨提示 -->
+    <div class="mt-10 bg-blue-50 border-l-4 border-primary p-6 rounded-r-lg">
+        <h3 class="font-semibold text-primary mb-2">温馨提示</h3>
+        <ul class="space-y-2 text-gray-700">
+            <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-2"></i>
+                <span>1. 若查询结果显示异常，请检查输入的信息是否准确无误。</span>
+            </li>
+            <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-2"></i>
+                <span>2. 如对成绩有疑问，请在规定时间内联系当地招生考试机构申请复核。</span>
+            </li>
+            <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-2"></i>
+                <span>3. 请妥善保管个人信息，避免泄露。</span>
+            </li>
+            <li class="flex items-start">
+                <i class="fa fa-info-circle text-primary mt-1 mr-2"></i>
+                <span>4. 本系统成绩仅供参考，最终以正式成绩单为准。</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 常见问题 -->
+    <div class="mt-10 bg-white rounded-xl shadow-lg overflow-hidden">
+        <div class="p-6 border-b">
+            <h3 class="text-xl font-semibold text-gray-800">常见问题</h3>
+        </div>
+        <div class="p-6 space-y-4">
+            <div class="border-b border-gray-100 pb-4">
+                <h4 class="font-medium text-gray-800 mb-2">1. 如何申请成绩复核？</h4>
+                <p class="text-gray-600">考生如对本人成绩有异议，可在规定时间内携带本人身份证、准考证到所在县（市、区）招生考试机构办理成绩复核申请手续。复核结果由招生考试机构通知考生本人。</p>
+            </div>
+            <div class="border-b border-gray-100 pb-4">
+                <h4 class="font-medium text-gray-800 mb-2">2. 何时可以查询录取结果？</h4>
+                <p class="text-gray-600">2025年山东省普通高校招生录取工作将从7月上旬开始，至8月底结束。各批次录取结果查询时间请关注山东省教育招生考试院官网通知。</p>
+            </div>
+            <div class="border-b border-gray-100 pb-4">
+                <h4 class="font-medium text-gray-800 mb-2">3. 高考总分是如何计算的？</h4>
+                <p class="text-gray-600">夏季高考总成绩由语文、数学、外语3门统一高考科目成绩和考生选报的3门普通高中学业水平等级考试科目成绩组成，总分为750分。其中，语文、数学、外语单科满分均为150分，按原始成绩计入总分；选考科目单科满分均为100分，其中物理、历史以原始成绩计入总分，其余科目以等级转换分计入总分。</p>
+            </div>
+            <div>
+                <h4 class="font-medium text-gray-800 mb-2">4. 忘记考生号怎么办？</h4>
+                <p class="text-gray-600">考生可联系所在学校或县（市、区）招生考试机构查询本人考生号。也可登录山东省教育招生考试院官网，通过"找回考生号"功能，凭身份证号和姓名等信息查询。</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- 页脚 -->
+<footer class="bg-gray-800 text-white mt-16">
+    <div class="container mx-auto px-4 py-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                <ul class="space-y-2">
+                    <li class="flex items-center">
+                        <i class="fa fa-phone mr-2 text-gray-400"></i>
+                        <span>咨询电话：0531-86162757</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-envelope mr-2 text-gray-400"></i>
+                        <span>邮箱：zsb@sd-ei.edu.cn</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-map-marker mr-2 text-gray-400"></i>
+                        <span>地址：山东省济南市文化西路29号</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">相关链接</h4>
+                <ul class="space-y-2">
+                    <li><a href="http://www.sdei.edu.cn/" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-200">山东省教育招生考试院</a></li>
+                    <li><a href="http://zsb.sdei.edu.cn/" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-200">山东省教育厅</a></li>
+                    <li><a href="https://gaokao.chsi.com.cn/" target="_blank" class="text-gray-300 hover:text-white transition-colors duration-200">中国高等教育学生信息网</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">关注我们</h4>
+                <div class="flex space-x-4 mb-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors duration-200">
+                        <i class="fa fa-weibo"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors duration-200">
+                        <i class="fa fa-wechat"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary transition-colors duration-200">
+                        <i class="fa fa-qq"></i>
+                    </a>
+                </div>
+                <p class="text-gray-400 text-sm">扫描下方二维码，关注官方公众号</p>
+                <div class="mt-2 bg-gray-700 w-32 h-32 flex items-center justify-center">
+                    <span class="text-xs">公众号二维码</span>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+            <p>© 2025 山东省教育招生考试院 版权所有</p>
+            <p class="mt-1">鲁ICP备XXXXXXXX号-X | 鲁公网安备XXXXXXXXXXXXXX号</p>
+        </div>
+    </div>
+</footer>
+
+<!-- 加载动画 -->
+<div id="loading" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-xl flex flex-col items-center">
+        <div class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="text-gray-700 font-medium">正在查询成绩，请稍候...</p>
+    </div>
+</div>
+
+<!-- 成功提示 -->
+<div id="successToast" class="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-lg shadow-lg z-50 hidden transform translate-y-10 opacity-0 transition-all duration-300">
+    <div class="flex items-center">
+        <i class="fa fa-check-circle text-xl mr-2"></i>
+        <span>成绩查询成功！</span>
+    </div>
+</div>
+
+<script>
+    // 移动端菜单切换
+    document.getElementById('menuBtn').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // 标签页切换
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // 移除所有标签按钮的活动状态
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active', 'text-primary', 'border-b-2', 'border-primary');
+                b.classList.add('text-gray-500');
+            });
+
+            // 添加当前标签按钮的活动状态
+            this.classList.add('active', 'text-primary', 'border-b-2', 'border-primary');
+            this.classList.remove('text-gray-500');
+
+            // 隐藏所有标签内容
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.add('hidden');
+                pane.classList.remove('active');
+            });
+
+            // 显示当前标签内容
+            const tabId = this.getAttribute('data-tab');
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // 验证码刷新
+    document.getElementById('captchaImg').addEventListener('click', function() {
+        this.innerHTML = '<span class="text-gray-600 text-sm">验证码已刷新</span>';
+        setTimeout(() => {
+            this.innerHTML = '<span class="text-gray-600 text-sm">点击刷新验证码</span>';
+        }, 2000);
+    });
+
+    // 表单提交处理
+    document.getElementById('scoreForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // 显示加载动画
+        document.getElementById('loading').classList.remove('hidden');
+
+        // 模拟API请求延迟
+        setTimeout(() => {
+            // 隐藏加载动画
+            document.getElementById('loading').classList.add('hidden');
+
+            // 显示成功提示
+            const successToast = document.getElementById('successToast');
+            successToast.classList.remove('hidden', 'translate-y-10', 'opacity-0');
+
+            // 3秒后隐藏提示
+            setTimeout(() => {
+                successToast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => {
+                    successToast.classList.add('hidden');
+                }, 300);
+            }, 3000);
+
+            // 显示成绩结果
+            document.getElementById('resultSection').classList.remove('hidden');
+
+            // 滚动到结果区域
+            document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+        }, 1500);
+    });
+
+    // 返回查询按钮
+    document.getElementById('backBtn').addEventListener('click', function() {
+        document.getElementById('resultSection').classList.add('hidden');
+        document.getElementById('scoreForm').reset();
+    });
+
+    // 打印按钮
+    document.getElementById('printBtn').addEventListener('click', function() {
+        window.print();
+    });
+
+    // 保存PDF按钮
+    document.getElementById('saveBtn').addEventListener('click', function() {
+        alert('PDF保存功能将在正式环境中提供');
+    });
+</script>
+</body>
+</html>
+
